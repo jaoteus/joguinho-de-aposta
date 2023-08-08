@@ -1,35 +1,41 @@
 import random
 # Variáveis
-saldo = 0.0; valor = 0.0; nome = ''; idade = ''; numAleatorio = 0; VALORGANHO = 2.0; numEscolhido = ''
+saldo = 0.0; valor = 0.0; nome = ''; idade = ''; numAleatorio = 0; VALORPERCA = 1.0; VALORGANHO = 2.0; numEscolhido = ''
 # loops
 loopCriarConta = loopNome = lacoIdade = loopDeposito = loopAposta = True
 loopPrincipal = True
 try:
     while loopCriarConta:
         while loopNome:
-            # Resolvido
-            nome = input('Digite seu nome: ')
-            nome = nome.replace(' ', 'x')
+            primeiroNome = input('Digite seu primeiro nome: ')
+            sobreNome = input('Digite o seu sobrenome: ')
+            nome = '{}{}'
+            nome = nome.format(primeiroNome, sobreNome)
             if nome.isalpha() == False:
                 print('Seu nome tem que conter apenas letras!')
                 continue
             else:
-                nome = nome.replace('x', ' ')
+                nome = '{} {}'
+                nome = nome.format(primeiroNome, sobreNome)
                 break
-
-
+#------------------------------------------
         while lacoIdade:
             idade = input('Digite sua idade: ')
-            if idade < '18':
+            if idade.isnumeric() == False:
+                print('Sua idade não pode conter letras!')
+                continue
+            else:
+                idade = int(idade)
+                pass
+            if idade < 18:
                 print('Usuários menores de 18 anos não podem criar conta aqui!')
                 loopCriarConta = False
                 loopPrincipal = False
                 lacoIdade = False
-            elif idade > '18' and idade.isnumeric() == False:
-                print('Sua idade deve ter apenas números!')
-                continue
-            elif idade > '18':
+            elif idade > 18:
+                print('Conta criada com sucesso!')
                 break
+            #-----------------------------------------------
         break
     # Funções
      
@@ -48,12 +54,12 @@ try:
             print(mostrarSaldo)
 
     def aposta():
-        global saldo, VALORGANHO
+        global saldo, VALORGANHO, VALORPERCA
         print('Ganho: R$2.00')
         while loopAposta:
-            numAleatorio = random.randrange(0, 5)
+            numAleatorio = random.randrange(0, 3)
             numAleatorio = str(numAleatorio)
-            numEscolhido = input('Digite um número entre 0 e 5: ')
+            numEscolhido = input('Digite um número entre 0 e 3: ')
             if numAleatorio == numEscolhido:
                 saldo += VALORGANHO
                 print('Você ganhou :)')
