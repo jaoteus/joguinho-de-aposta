@@ -84,14 +84,15 @@ try:
 
     def sacar():
         global loopSacar, valor, saldo, mostrarSaldo, mostrarValorSacado
-        if saldo == 0.0:
-            print('Você não tem dinheiro suficiente para sacar :(')
-            mostrarSaldo = 'Seu saldo atual é de R${}'
-            mostrarSaldo = mostrarSaldo.format(saldo)
-            print(mostrarSaldo)
-        else:
-            pass
         while loopSacar:
+            if saldo == 0.0:
+                print('Você não tem dinheiro suficiente para sacar :(')
+                mostrarSaldo = 'Seu saldo atual é de R${}'
+                mostrarSaldo = mostrarSaldo.format(saldo)
+                print(mostrarSaldo)
+                break
+            else:
+                pass
             valor = float(input('Digite o valor que deseja sacar: R$'))
             if valor > saldo:
                 print('Saldo insuficiente :(')
