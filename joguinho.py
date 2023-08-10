@@ -28,7 +28,7 @@ try:
                 idade = int(idade)
                 pass
             if idade < 18:
-                print('Usuários menores de 18 anos não podem criar conta aqui!')
+                print('Usuários menores de 18 anos não podem jogar ;)')
                 loopCriarConta = False
                 loopPrincipal = False
                 lacoIdade = False
@@ -39,7 +39,7 @@ try:
     # Funções
      
     def main():
-        print('1 - Ver seu dados\n2 - Iniciar aposta\n3 - Depositar\n4 - Sacar\nS / s - Sair\n')
+        print('1 - Ver seu dados\n2 - Iniciar aposta\n3 - Depositar\n4 - Sacar\n5 - Loja (MANUTENÇÃO)\n6 - Inventário (MANUTENÇÃO)\nS / s - Sair\n')
 
     def mostrarDados():
         global mostrarNome,  mostrarIdade, mostrarSaldo
@@ -54,22 +54,28 @@ try:
         print(mostrarSaldo)
 
     def aposta():
-        global saldo, VALORGANHO, VALORPERCA, numAleatorio, numEscolhido, mensagemGanho, mensagemPerda
+        global saldo, VALORGANHO, VALORPERCA, numAleatorio, numEscolhido, mensagemGanho, mensagemPerda, mostrarNumeroSorteado
         print('\n!!! Se você acertar o número aleatório, ganhará R$2.00 !!!\n!!! Se você não acertar o número aleatório, perderá R$0.50 !!!')
         while loopAposta:
-            numAleatorio = random.randrange(0, 3)
+            numAleatorio = random.randrange(0, 4)
             numAleatorio = str(numAleatorio)
             numEscolhido = input('\nDigite um número de 0 a 3: ')
             if numAleatorio == numEscolhido:
                 saldo += VALORGANHO
-                print('\nVocê ganhou :)')
+                mostrarNumeroSorteado = '\nO número sorteado foi {}.'
+                mostrarNumeroSorteado = mostrarNumeroSorteado.format(numAleatorio)
+                print(mostrarNumeroSorteado)
+                print('Você ganhou :)')
                 mensagemGanho = 'Depositamos um valor de R${} na sua conta, seu saldo atual é de R${}\n'
                 mensagemGanho = mensagemGanho.format(VALORGANHO, saldo)
                 print(mensagemGanho)
                 break
             elif numAleatorio != numEscolhido:
                 saldo -= VALORPERCA
-                print('\nVocê perdeu :(')
+                mostrarNumeroSorteado = '\nO número sorteado foi {}.'
+                mostrarNumeroSorteado = mostrarNumeroSorteado.format(numAleatorio)
+                print(mostrarNumeroSorteado)
+                print('Você perdeu :(')
                 mensagemPerda = 'Retiramos R${} da sua conta, seu saldo atual é R${}\n'
                 mensagemPerda = mensagemPerda.format(VALORPERCA, saldo)
                 print(mensagemPerda)
@@ -127,6 +133,10 @@ try:
             depositar()
         elif opcaoMain == '4':
             sacar()
+        elif opcaoMain == '5':
+            print('Ainda estamos implementando este sistema, em breve estará disponível :)')
+        elif opcaoMain == '6':
+            print('Ainda estamos implementando este sistema, em breve estará disponível :)')
         elif opcaoMain == 'S' or opcaoMain == 's':
             print('Volte sempre :)\nSaindo...')
             loopPrincipal = False
