@@ -1,9 +1,10 @@
 # módulos
 import random
 # Variáveis
-saldo = 0.0; valor = 0.0; nome = ''; idade = ''; numAleatorio = 0; VALORPERCA = 0.50; VALORGANHO = 2.0; numEscolhido = ''
+opcaoFrutas = ''; opcaoLoja = ''; saldo = 0.0; valor = 0.0; nome = ''; idade = ''; numAleatorio = 0; VALORPERCA = 0.50; VALORGANHO = 2.0; numEscolhido = ''
+PRECOMACA = 2.00
 # loops
-loopCriarConta = loopNome = lacoIdade = loopDeposito = loopAposta = loopSacar = True
+loopCriarConta = loopNome = lacoIdade = loopDeposito = loopAposta = loopSacar = loopLoja = True
 loopPrincipal = True
 try:
     while loopCriarConta:
@@ -116,6 +117,36 @@ try:
                 print(mostrarSaldo)
                 break
 
+
+#------------------------------------------------------------
+    def loja():
+        global loopLoja, opcaoLoja, opcaoFrutas, saldo
+        while loopLoja:
+            print('Frutas')
+            opcaoLoja = input('Digite: ')
+            opcaoLoja = opcaoLoja.lower()
+            if opcaoLoja == 'frutas':
+                print('O que deseja comprar ?\n\nMaçã - R$2.00')
+                opcaoFrutas = input('Digite o nome da fruta: ')
+                opcaoFrutas = opcaoFrutas.lower()
+                if opcaoFrutas == 'maca':
+                    if saldo < PRECOMACA:
+                        mostrarMensagemMaca = 'Voçê não tem saldo suficiente para comprar Maça no valor de R${}'
+                        mostrarMensagemMaca = mostrarMensagemMaca.format(PRECOMACA)
+                        print(mostrarMensagemMaca)
+                        break
+                    else:
+                        mostrarMensagemMaca = 'Você comprou uma maçã no valor de R${}'
+                        mostrarMensagemMaca = mostrarMensagemMaca.format(PRECOMACA)
+                        print(mostrarMensagemMaca)
+                        break
+                elif opcaoFrutas == '':
+                    print('Manutenção :(')
+                    break
+                else:
+                    ('Algo você não colocou')
+#-------------------------------------------------------------------------------------
+
     while loopPrincipal:
         main()
         opcaoMain = input('Digite uma opção: ')
@@ -135,6 +166,7 @@ try:
             sacar()
         elif opcaoMain == '5':
             print('Ainda estamos implementando este sistema, em breve estará disponível :)')
+            loja()
         elif opcaoMain == '6':
             print('Ainda estamos implementando este sistema, em breve estará disponível :)')
         elif opcaoMain == 'S' or opcaoMain == 's':
