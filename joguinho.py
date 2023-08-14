@@ -2,7 +2,7 @@
 import random
 # Variáveis
 opcaoFrutas = ''; opcaoLoja = ''; saldo = 0.0; valor = 0.0; nome = ''; idade = ''; numAleatorio = 0; VALORPERCA = 0.50; VALORGANHO = 2.0; numEscolhido = ''
-PRECOMACA = 2.00
+PRECOMACA = 1.00; PRECOLARANJA = 1.00
 # loops
 loopCriarConta = loopNome = lacoIdade = loopDeposito = loopAposta = loopSacar = loopLoja = True
 loopPrincipal = True
@@ -126,7 +126,7 @@ try:
             opcaoLoja = input('Digite: ')
             opcaoLoja = opcaoLoja.lower()
             if opcaoLoja == 'frutas':
-                print('O que deseja comprar ?\n\nMaçã - R$2.00')
+                print('O que deseja comprar ?\n\nMaçã - R$1.00\nLaranja - R$1.00')
                 opcaoFrutas = input('Digite o nome da fruta: ')
                 opcaoFrutas = opcaoFrutas.lower()
                 if opcaoFrutas == 'maca':
@@ -139,6 +139,17 @@ try:
                         mostrarMensagemMaca = 'Você comprou uma maçã no valor de R${}'
                         mostrarMensagemMaca = mostrarMensagemMaca.format(PRECOMACA)
                         print(mostrarMensagemMaca)
+                        break
+                elif opcaoFrutas == 'laranja':
+                    if saldo < PRECOLARANJA:
+                        mostrarMensagemLaranja = 'Voçê não tem saldo suficiente para comprar laranja no valor de R${}'
+                        mostrarMensagemLaranja = mostrarMensagemLaranja.format(PRECOLARANJA)
+                        print(mostrarMensagemLaranja)
+                        break
+                    else:
+                        mostrarMensagemLaranja = 'Você comprou uma maçã no valor de R${}'
+                        mostrarMensagemLaranja = mostrarMensagemLaranja.format(PRECOLARANJA)
+                        print(mostrarMensagemLaranja)
                         break
                 elif opcaoFrutas == '':
                     print('Manutenção :(')
