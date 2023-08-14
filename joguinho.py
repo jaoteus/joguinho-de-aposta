@@ -164,9 +164,11 @@ try:
             depositar()
         elif opcaoMain == '4':
             sacar()
+#-------------------------------------------------------------------------------
         elif opcaoMain == '5':
             print('Ainda estamos implementando este sistema, em breve estará disponível :)')
             loja()
+#-------------------------------------------------------------------------------
         elif opcaoMain == '6':
             print('Ainda estamos implementando este sistema, em breve estará disponível :)')
         elif opcaoMain == 'S' or opcaoMain == 's':
